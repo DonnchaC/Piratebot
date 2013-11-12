@@ -49,11 +49,11 @@ class Protocol:
 		
 		return data
 
-	def leave(self, channel):
-		self.send("LEAVE")
-	
 	def join(self, channel):
 		self.send("JOIN %s" % channel)
+	
+	def leave(self, channel):
+		self.send("PART %s" % channel)
 	
 	def notice(self, nickname, text):
 		self.send("NOTICE %s :%s" % (nickname, text))

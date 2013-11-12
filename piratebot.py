@@ -59,7 +59,12 @@ class piratebot(botlib.Bot):
 			username = self.get_username()
 			channel = self.get_channel()
 			new_channel = self.get_args();
-			if username == "bhek":
+
+			for i in range (len(committee)-1):
+				if committee[i] == hostname:
+					match = 1
+
+			if match is 1:
 				if channel[0] == "#":
 					if len(new_channel) == 0:
 						if channel[0] == "#":
@@ -76,18 +81,21 @@ class piratebot(botlib.Bot):
 			else:
 				self.protocol.privmsg(channel, "You can't tell me what to do!")
 
+		# >leave command
+        elif botlib.check_on_own(self.data, ">leave"):
+            self.protocol.leave(self.get_channel())
+
 		# >say command
 		elif botlib.check_on_own(self.data, ">say"):
 			username = self.get_username()
 			arguments = self.get_args()
 			channel = arguments[0]
-			if username == "bhek":
-				if channel[0] == "#":
-					message = ' '.join(arguments[1:])
-					self.protocol.privmsg(channel, message)
-				else:
-					message = ' '.join(arguments[0:])
-					self.protocol.privmsg("#pirates-com", message)
+			if channel[0] == "#":
+				message = ' '.join(arguments[1:])
+				self.protocol.privmsg(channel, message)
+			else:
+				message = ' '.join(arguments[0:])
+				self.protocol.privmsg("#pirates-com", message)
  
 		# >add command
 		elif botlib.check_on_own(self.data, ">add"):
@@ -190,7 +198,7 @@ class piratebot(botlib.Bot):
 				if committee[i] == hostname:
 					match = 1
 			
-			if match == 1:
+			if match is 1:
 				member_info = self.get_args()
 				#channel = self.get_username()
 				if len(member_info) >= 3:   # Check if both a valid email and name are provided
