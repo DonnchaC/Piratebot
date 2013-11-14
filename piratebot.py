@@ -82,7 +82,7 @@ class piratebot(botlib.Bot):
 				self.protocol.privmsg(channel, "You can't tell me what to do!")
 
 		# >leave command
-        elif botlib.check_on_own(self.data, ">leave"):
+        elif botlib.check_found(self.data, ">leave"):
             self.protocol.leave(self.get_channel())
 
 		# >say command
