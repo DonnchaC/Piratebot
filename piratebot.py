@@ -18,13 +18,13 @@ committee = []
 todo = []
 currentAcademicYear = 2013
 
-with open('piratesURL.txt') as piratesURL:
-	piratesAPIUrl = piratesAPIUrl.readlines()
+with open('piratesURL.txt') as fURL:
+	piratesAPIUrl = fURL.read().replace('\n', '')
 
 mailmanUrl = "https://lists.netsoc.tcd.ie/cgi-bin/mailman/admin/pirates-announce/"
 
-with open('password.txt') as password:
-		mailmanPassword = password.readlines()
+with open('password.txt') as fpass:
+	mailmanPassword = fpass.read().replace('\n', '')
  
 # Create a new class for our bot, extending the Bot class from botlib
 class piratebot(botlib.Bot):
