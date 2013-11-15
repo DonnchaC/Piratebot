@@ -214,7 +214,7 @@ class piratebot(botlib.Bot):
 						apiResponse = urllib2.urlopen(apiRequest) # Parse the response and provide message back to user
 						apiResponseJson = json.loads(apiResponse.read())
 						self.protocol.privmsg(channel, apiResponseJson['Message']+' ('+apiResponseJson['Value']+')')
-					except UrlError, e:
+					except urllib2.UrlError, e:
 					#except:
 						e = sys.exc_info()[0]
 						self.protocol.privmsg(channel, 'Could not add user to VPN list! Error: ' + str(e))
